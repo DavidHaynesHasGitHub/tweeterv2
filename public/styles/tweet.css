@@ -1,0 +1,26 @@
+#tweet {
+	margin-top: 80px;
+	width: 400px;
+  position: relative;
+}
+
+.card-image{
+  height: 50px;
+  width: 50px;
+}
+
+.materialboxed{
+  margin: 5px
+}
+
+#fav {
+  color: #2196f3;
+}
+
+#sync {
+  color: #2196f3;
+}
+
+#flag {
+  color: #2196f3;
+}

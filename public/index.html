@@ -1,33 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <!-- login CSS -->
+    <link rel="stylesheet" href="/styles/login.css" type="text/css" />
+    <!-- Tweet CSS -->
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
+    <!-- NAV BAR -->
+    <div class="navbar-fixed">
+      <nav>
+         <div class="nav-wrapper blue lighten-1">
+           <a href="#" class="brand-logo center"><i class="material-icons">comment</i>Tweeter</a>
+           <ul id="nav-mobile" class="right">
+             <li><a href="#"><i class="material-icons compose">create</i>Compose</a></li>
+           </ul>
+         </div>
+       </nav>
+    </div>
+    <!-- Login FORM -->
 
-    <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
-      <span class="header">Tweeter</span>
-    </nav>
+      <div class="container white">
+       <ul class="tabs blue lighten-1">
+         <li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
+         <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
+       </ul>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-    </main>
+       <div id="login" class="col s12">
+         <form class="col s12">
+           <div class="form-container">
+             <h3 class="blue-text">Hello</h3>
+             <div class="row">
+               <div class="input-field col s12">
+                 <input id="email" type="email" class="validate">
+                 <label for="email">email</label>
+               </div>
+             </div>
+             <div class="row">
+               <div class="input-field col s12">
+                 <input id="password" type="password" class="validate">
+                 <label for="password">Password</label>
+               </div>
+             </div>
+             <br>
+             <center>
+               <button id='login' class="btn waves-effect waves-light blue lighten-1" type="submit" name="action">Login</button>
+               <br>
+               <br>
+
+             </center>
+           </div>
+         </form>
+       </div>
+       <div id="register" class="col s12">
+         <form class="col s12">
+           <div class="form-container">
+             <h3 class="blue-text">Welcome</h3>
+             <div class="row">
+               <div class="input-field col s12">
+                 <input id="email" type="email" class="validate">
+                 <label for="email">email</label>
+               </div>
+
+             </div>
+
+             <div class="row">
+               <div class="input-field col s12">
+                 <input id="password" type="password" class="validate">
+                 <label for="password">Password</label>
+               </div>
+             </div>
+             <center>
+               <button id='submit' class="btn waves-effect waves-light blue lighten-1" type="submit" name="action">Submit</button>
+             </center>
+           </div>
+         </form>
+       </div>
+      </div>
+
+      <div class="container">
+        <div id="tweet" class="col s12">
+          <div class="card horizontal">
+            <img class="materialboxed" width="50" src="images/bird.png">
+            <div class="card-stacked">
+              <div class="card-content">
+                <p id=#tweetBody>This will be the body of the tweet</p>
+              </div>
+              <div class="card-action">
+                <a href="#" class="right"><i id="sync"class="material-icons col s3">sync</i></a>
+                <a href="#" class="right"><i id="flag"class="material-icons col s3">flag</i></a>
+                <a href="#" class="right"><i id="fav" class="material-icons col s3">favorite</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
+    <!-- livestamp formats moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.js"></script>
 
   </body>
 </html>

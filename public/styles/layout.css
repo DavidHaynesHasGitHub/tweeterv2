@@ -20,6 +20,22 @@ body {
   background-color: #eee;
 }
 
+.clearfix{
+  clear: both;
+}
+#nav-mobile{
+  padding-right: 50px;
+
+}
+
+#nav-mobile .compose{
+  display: inline-block;
+}
+
+
+
+
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
