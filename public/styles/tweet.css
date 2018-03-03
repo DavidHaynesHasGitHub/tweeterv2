@@ -1,16 +1,27 @@
 #tweet {
 	margin-top: 80px;
 	width: 400px;
+  height: 100%;
   position: relative;
 }
 
-.card-image{
-  height: 50px;
-  width: 50px;
+.chip {
+  display: inline-block;
+  height: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
-.materialboxed{
-  margin: 5px
+#tweetUsername{
+
+}
+
+#tweetHandle{
+ color: #828891;
+}
+
+#tweetBody{
+
 }
 
 #fav {

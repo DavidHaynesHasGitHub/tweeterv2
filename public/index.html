@@ -24,7 +24,7 @@
 
   <body>
     <!-- NAV BAR -->
-    <div class="navbar-fixed">
+    <div class="navbar-fixed z-depth-2">
       <nav>
          <div class="nav-wrapper blue lighten-1">
            <a href="#" class="brand-logo center"><i class="material-icons">comment</i>Tweeter</a>
@@ -36,7 +36,7 @@
     </div>
     <!-- Login FORM -->
 
-      <div class="container white">
+      <div class="container white z-depth-2">
        <ul class="tabs blue lighten-1">
          <li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
          <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
@@ -94,23 +94,43 @@
        </div>
       </div>
 
-      <div class="container">
-        <div id="tweet" class="col s12">
-          <div class="card horizontal">
-            <img class="materialboxed" width="50" src="images/bird.png">
-            <div class="card-stacked">
-              <div class="card-content">
-                <p id=#tweetBody>This will be the body of the tweet</p>
-              </div>
-              <div class="card-action">
-                <a href="#" class="right"><i id="sync"class="material-icons col s3">sync</i></a>
-                <a href="#" class="right"><i id="flag"class="material-icons col s3">flag</i></a>
-                <a href="#" class="right"><i id="fav" class="material-icons col s3">favorite</i></a>
-              </div>
+      <div class="container white z-depth-2">
+        <div class="card z-depth-2">
+            <div class="chip">
+              <img src="images/blankava.png" alt="Contact Person">
+               @handle
+            </div>
+            <div class="card-content">
+              <span class='card-title'>Username</span>
+              <p id="tweetBody">This will be the body of the tweet</p>
+            <div class="card-action">
+              <a href="#" class="right"><i id="sync"class="material-icons col s3">sync</i></a>
+              <a href="#" class="right"><i id="flag"class="material-icons col s3">flag</i></a>
+              <a href="#" class="right"><i id="fav" class="material-icons col s3">favorite</i></a>
             </div>
           </div>
         </div>
       </div>
+
+    <div class="container white z-depth-2">
+      <div id="tweet" class="col s12">
+        <form class="col s12">
+          <div class="form-container">
+            <h3 class="blue-text">New Tweet</h3>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea" data-length="140"></textarea>
+                <label for="textarea1">Tweet</label>
+              </div>
+            </div>
+              <button id='tweetSend' class="btn waves-effect waves-light blue lighten-1" type="submit" name="action">Tweet</button>
+              <br>
+              <br>
+            </center>
+          </div>
+        </form>
+      </div>
+    </div>
 
 
 
