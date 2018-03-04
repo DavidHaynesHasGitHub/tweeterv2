@@ -23,12 +23,19 @@ body {
 .clearfix{
   clear: both;
 }
+
+
+
 #nav-mobile{
   padding-right: 50px;
 
 }
 
-#nav-mobile .compose{
+#compose{
+  display: inline-block;
+}
+
+#loginregbtn{
   display: inline-block;
 }
 

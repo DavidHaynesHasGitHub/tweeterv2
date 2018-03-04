@@ -14,47 +14,55 @@
     <link rel="stylesheet" href="/styles/login.css" type="text/css" />
     <!-- Tweet CSS -->
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- Tweet CSS -->
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+    <!-- Tweet CSS -->
+    <link rel="stylesheet" href="/styles/flash.css" type="text/css" />
+
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
     <!-- NAV BAR -->
-    <div class="navbar-fixed z-depth-2">
+    <div id="navBar" class="navbar-fixed z-depth-2">
       <nav>
          <div class="nav-wrapper blue lighten-1">
            <a href="#" class="brand-logo center"><i class="material-icons">comment</i>Tweeter</a>
-           <ul id="nav-mobile" class="right">
-             <li><a href="#"><i class="material-icons compose">create</i>Compose</a></li>
+           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+           <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a ><i class="material-icons" id="loginregbtn">person_add</i>Login or Register</a></li>
+              <li><a ><i class="material-icons" id="compose">create</i>Compose</a></li>
            </ul>
+
          </div>
        </nav>
     </div>
+    <ul class="side-nav" id="mobile-demo"class="button-collapse">
+      <li><a ><i class="material-icons login">person_add</i>Login or Register</a></li>
+      <li><a><i class="material-icons compose">create</i>Compose</a></li>
+   </ul>
     <!-- Login FORM -->
 
-      <div class="container white z-depth-2">
+      <div class="loginreg container white z-depth-2">
        <ul class="tabs blue lighten-1">
          <li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
          <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
        </ul>
 
-       <div id="login" class="col s12">
-         <form class="col s12">
+       <div  class="col s12">
+         <form class="col s12"  action="/tweets/login" method='POST'>
            <div class="form-container">
              <h3 class="blue-text">Hello</h3>
              <div class="row">
                <div class="input-field col s12">
-                 <input id="email" type="email" class="validate">
+                 <input id="email" type="email" class="validate" name="email">
                  <label for="email">email</label>
                </div>
              </div>
              <div class="row">
                <div class="input-field col s12">
-                 <input id="password" type="password" class="validate">
+                 <input id="password" type="password" class="validate" name="password">
                  <label for="password">Password</label>
                </div>
              </div>
@@ -69,12 +77,12 @@
          </form>
        </div>
        <div id="register" class="col s12">
-         <form class="col s12">
+         <form class="col s12" id='login-info' action="/tweets/register" method='POST'>
            <div class="form-container">
              <h3 class="blue-text">Welcome</h3>
              <div class="row">
                <div class="input-field col s12">
-                 <input id="email" type="email" class="validate">
+                 <input id="email" type="email" name='email' class="validate">
                  <label for="email">email</label>
                </div>
 
@@ -82,7 +90,7 @@
 
              <div class="row">
                <div class="input-field col s12">
-                 <input id="password" type="password" class="validate">
+                 <input id="password" type="password" name ='password'class="validate">
                  <label for="password">Password</label>
                </div>
              </div>
@@ -94,53 +102,65 @@
        </div>
       </div>
 
-      <div class="container white z-depth-2">
-        <div class="card z-depth-2">
-            <div class="chip">
-              <img src="images/blankava.png" alt="Contact Person">
-               @handle
+      <div id="tweet" class="container white z-depth-2">
+        <div class="col s12">
+          <form class="col s12">
+            <div class="form-container">
+              <h3 class="blue-text">New Tweet</h3>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea" data-length="140" maxlength="140"></textarea>
+                  <label for="textarea1">Tweet</label>
+                </div>
+              </div>
+                <button id='tweetSend' class="btn waves-effect waves-light blue lighten-1" type="submit" name="action">Tweet</button>
+                <br>
+                <br>
+              </center>
             </div>
-            <div class="card-content">
-              <span class='card-title'>Username</span>
-              <p id="tweetBody">This will be the body of the tweet</p>
-            <div class="card-action">
-              <a href="#" class="right"><i id="sync"class="material-icons col s3">sync</i></a>
-              <a href="#" class="right"><i id="flag"class="material-icons col s3">flag</i></a>
-              <a href="#" class="right"><i id="fav" class="material-icons col s3">favorite</i></a>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 
-    <div class="container white z-depth-2">
-      <div id="tweet" class="col s12">
-        <form class="col s12">
-          <div class="form-container">
-            <h3 class="blue-text">New Tweet</h3>
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" data-length="140"></textarea>
-                <label for="textarea1">Tweet</label>
+
+      <div id="tweetFeed"></div>
+        <script id="tweetTemplate" type="text/x-handlebars-template">
+          {{#each this}}
+
+          <div class="container">
+            <div class="card">
+                <div class="chip">
+                  <img src= "{{user.avatars.small}}" alt="Contact Person">
+                   {{user.handle}}
+                </div>
+                <div class="card-content">
+                  <span class='card-title'>{{user.name}}</span>
+                  <p class="card-subtitle flow-text">{{content.text}}</p>
+
+                <div class="card-action">
+                  <a href="#" class="right"><i id="sync"class="material-icons col s3">sync</i></a>
+                  <a href="#" class="right"><i id="flag"class="material-icons col s3">flag</i></a>
+                  <a href="#" class="right"><i id="fav" class="material-icons col s3">favorite</i></a>
+                </div>
               </div>
             </div>
-              <button id='tweetSend' class="btn waves-effect waves-light blue lighten-1" type="submit" name="action">Tweet</button>
-              <br>
-              <br>
-            </center>
           </div>
-        </form>
-      </div>
-    </div>
+          {{/each}}
+        </script>
 
 
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
-    <!-- livestamp formats moment -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
+      <!-- livestamp formats moment -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.js"></script>
+      <script src='scripts/app.js' charset='utf-8'></script>
+      <script src='scripts/flash.js' charset='utf-8'></script>
+
 
   </body>
 </html>
