@@ -20,10 +20,9 @@ module.exports = function makeDataHelpers(db) {
         if (err) {
           return callback(err, null);
         }
-
         tweets.sort((a, b) => {
-          return b.created_at - a.created_at
-        })
+          return b.created_at - a.created_at;
+        });
         callback(null, tweets);
       });
 
@@ -62,8 +61,8 @@ module.exports = function makeDataHelpers(db) {
         } else {
           callback(null, users);
         }
-      })
-    },
+      });
+    }
 
   };
-}
+};
